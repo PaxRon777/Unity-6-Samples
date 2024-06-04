@@ -52,12 +52,7 @@ public class ObjectPooling : MonoBehaviour
         print("destroyed bullet");
         _bulletCount--;
         Destroy(bullet);
-    }
-
-    void Update()
-    {        
-     
-    }
+    }  
 
     private void FireBullet()
     {
