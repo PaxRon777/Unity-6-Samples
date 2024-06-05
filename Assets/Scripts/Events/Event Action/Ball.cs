@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 
+
 public class Ball : MonoBehaviour
 {
     public static event Action<int> OnScore;
@@ -25,3 +26,5 @@ public class Ball : MonoBehaviour
         GetComponent<Rigidbody>().linearVelocity = Vector3.right * 10;
     }
 }
+
+
