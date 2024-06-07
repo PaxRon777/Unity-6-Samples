@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour
 {
     public static event Action<int> OnScore;
 
-    private int score;
+    private int _score;
 
     void Start()
     {
@@ -15,8 +15,8 @@ public class Ball : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        score++;
-        OnScore?.Invoke(score); //Fire the even to update the score text that is subscribed to this event
+        _score++;
+        OnScore?.Invoke(_score); //Fire the even to update the score text that is subscribed to this event
         transform.position = Vector3.zero;
         MoveBall();
     }

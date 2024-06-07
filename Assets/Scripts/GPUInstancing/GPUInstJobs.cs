@@ -22,8 +22,7 @@ public class GPUInstJobs : MonoBehaviour
 
     private NativeArray<Matrix4x4> _matrices;
     private NativeArray<float3> _pos;
-    private RenderParams _rp;
-    private List<Transform> _objectList = new List<Transform>();
+    private RenderParams _rp;   
     private int _instances;
     private MatricesJob _job;
     private int _cpu;
