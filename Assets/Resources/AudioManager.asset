@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bacede77a03768d47aa07c9296733b7c, type: 3}
+  m_Name: AudioManager
+  m_EditorClassIdentifier: 
+  _audioMixer: {fileID: 24100000, guid: 472adb08a7f404f4ba9f86115998cbb0, type: 2}
+  _masterVolume: 0
+  _effectsVolume: 0
+  _musicVolume: 0
+  _mixerSFX: {fileID: -3738113926851876633, guid: 472adb08a7f404f4ba9f86115998cbb0, type: 2}
+  _mixerMusic: {fileID: 7839769180468579853, guid: 472adb08a7f404f4ba9f86115998cbb0, type: 2}
+  _audioSource: {fileID: 1204177889225127842, guid: ae958323f2470c84fa32ec337d4f728e, type: 3}
+  SfxClips: {fileID: 11400000, guid: 1820e7fff624b534b82e39805f10a3a6, type: 2}
