@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
+// Add items to a List, 
+
 public class Lists : MonoBehaviour
 {
     List<Animals> animals = new List<Animals>();

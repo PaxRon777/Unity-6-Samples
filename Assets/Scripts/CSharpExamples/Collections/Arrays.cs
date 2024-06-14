@@ -1,5 +1,7 @@
 using UnityEngine;
 
+// Store items in 2 arrays, the size of the array is set when initialised
+
 public class Arrays : MonoBehaviour
 {
     private string[] _animals = new string[10];
@@ -18,5 +20,12 @@ public class Arrays : MonoBehaviour
             if (animal != null)
                 print(animal);
         }
+
+        for (var i = 0; i < _ages.Length; i++)
+        {
+            print(_ages[i]);
+        }
+
+        print("How many animals are there? " + _animals.Length);
     }
 }

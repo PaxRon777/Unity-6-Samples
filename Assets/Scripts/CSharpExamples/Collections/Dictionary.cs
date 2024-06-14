@@ -1,5 +1,8 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
+// Add key/value pairs to a Dictionary, get a specific value against a key if it exists
 
 public class Dictionary : MonoBehaviour
 {
@@ -9,8 +12,9 @@ public class Dictionary : MonoBehaviour
         Dog,
         Lion,
     }
-
     private Dictionary<AnimalType, int> animals = new Dictionary<AnimalType, int>();
+    private int _animalNumber;
+
 
     void Start()
     {
@@ -21,6 +25,11 @@ public class Dictionary : MonoBehaviour
         foreach (var animal in animals)
         {
             print("There are " + animal.Value + " " + animal.Key + "s");
+        }
+
+        if (animals.TryGetValue(AnimalType.Dog, out _animalNumber))
+        {
+            print("How many dogs are there? " + _animalNumber);
         }
     }
 
