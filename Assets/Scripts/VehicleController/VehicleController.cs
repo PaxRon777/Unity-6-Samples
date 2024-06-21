@@ -1,7 +1,8 @@
 using System.Linq;
 using UnityEngine;
-using Unity.Cinemachine;
 using UnityEngine.InputSystem;
+
+//Simple vehicle controller
 
 namespace PixelBru.HeavyD
 {
@@ -21,7 +22,7 @@ namespace PixelBru.HeavyD
 
         private InputAction _moveAction;
         private InputAction _brakeAction;
-        private Vector2 _steering;
+        private Vector2 _playerInput;
         private float _currentSteerAngle;
         private float _currentbreakForce;
         private Vector3 _pos;
@@ -32,11 +33,11 @@ namespace PixelBru.HeavyD
 
         private void Start()
         {
-            //Input System
+            //Input System actions
             _moveAction = InputSystem.actions.FindAction("move");
             _brakeAction = InputSystem.actions.FindAction("jump");
 
-            //Center of gravity
+            //Set center of gravity
             _centerGravity = GameObject.Find("CenterGravity");
             _rb = GetComponent<Rigidbody>();
             _rb.centerOfMass = _centerGravity.transform.localPosition;          
@@ -44,7 +45,7 @@ namespace PixelBru.HeavyD
 
         private void Update()
         {
-            _steering = _moveAction.ReadValue<Vector2>();
+            _playerInput = _moveAction.ReadValue<Vector2>();
         }
 
         private void FixedUpdate()
@@ -58,14 +59,13 @@ namespace PixelBru.HeavyD
         //ACCELERATION
         private void Accelerate()
         {
-            _acceleration.y = _steering.y;
+            _acceleration.y = _playerInput.y;
 
             for (int i = 0; i < _wheelColliders.Count(); i++)
             {
                 _wheelColliders[i].motorTorque = _acceleration.y * _motorForce;
             }
         }
-
 
         //BRAKING
         private void Brake()
@@ -85,9 +85,9 @@ namespace PixelBru.HeavyD
         //STEERING
         private void Steer()
         {
-            if (_currentSteerAngle + _steering.x < _maxSteerAngle && _currentSteerAngle + _steering.x > -_maxSteerAngle)
+            if (_currentSteerAngle + _playerInput.x < _maxSteerAngle && _currentSteerAngle + _playerInput.x > -_maxSteerAngle)
             {
-                _currentSteerAngle += _steering.x * (Time.deltaTime * _turnSpeed);
+                _currentSteerAngle += _playerInput.x * (Time.deltaTime * _turnSpeed);
             }
 
             for (int i = 0; i < 2; i++)
@@ -97,7 +97,7 @@ namespace PixelBru.HeavyD
             Wheels();
         }
 
-        //WHEELS
+        //Update wheel transforms
         private void Wheels()
         {
             for (int i = 0; i < _wheelColliders.Count(); i++)
