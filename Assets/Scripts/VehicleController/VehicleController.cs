@@ -19,7 +19,6 @@ namespace PixelBru.HeavyD
         [Header("WHEEL TRANSFORMS")]
         [SerializeField] private Transform[] _wheelTransforms;
 
-
         private InputAction _moveAction;
         private InputAction _brakeAction;
         private Vector2 _steering;
@@ -33,6 +32,7 @@ namespace PixelBru.HeavyD
 
         private void Start()
         {
+            //Input System
             _moveAction = InputSystem.actions.FindAction("move");
             _brakeAction = InputSystem.actions.FindAction("jump");
 
