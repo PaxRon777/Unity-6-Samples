@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
     protected int Health = 100; //protected is not shown in the inspector but can be used in a inheriting class
     public string CharacterName; //shown in the inspector of a inheriting class
 
-    public int TakeDamage(int damage)
+    protected int TakeDamage(int damage) //protected method can be used by inheriting classes only
     {
         Health -= damage;
         return Health;
