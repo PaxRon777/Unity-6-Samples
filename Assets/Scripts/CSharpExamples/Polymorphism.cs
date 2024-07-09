@@ -11,7 +11,7 @@ public class Polymorphism : Vehicle
         print(WheelNumber()); // prints 6, a mustang GameObject would print 4 
     }
 
-    public override int WheelNumber()
+    protected override int WheelNumber()
     {
         base.WheelNumber(); //The WheelNumber() method runs inside the inherited base class Vehicle, setting the Wheels variable to 4
         Wheels += 2; //Adds 2 to Wheels to become 6
@@ -19,12 +19,12 @@ public class Polymorphism : Vehicle
     }
 }
 
-
+//Base class
 public class Vehicle : MonoBehaviour
 {
     protected int Wheels;
 
-    public virtual int WheelNumber()
+    protected virtual int WheelNumber()
     {
         Wheels = 4;
         return Wheels;
@@ -38,7 +38,7 @@ public class Mustang : Vehicle
         print("A mustang has " + WheelNumber() + " wheels");
     }
 
-    public override int WheelNumber()
+    protected override int WheelNumber()
     {
         Wheels += 4; //Wheel becomes 4
         return Wheels;
