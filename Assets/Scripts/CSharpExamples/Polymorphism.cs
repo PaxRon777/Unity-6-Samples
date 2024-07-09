@@ -1,46 +1,56 @@
 using UnityEngine;
+using System.Collections.Generic;
 
-//This is called subtyping in Unity, a type of polymorphism which is a single interface that can represent many different types.
-//In this example we have 2 MonoBehaviour objects that inherit from the Vehicle base class, both Override the WheelNumber() method, but only 1 runs the base class WheelNumber() method.
+//Polymorphism allows a class to be identified by more than one type.
 
-public class Polymorphism : Vehicle
+public class Polymorphism : MonoBehaviour
 {   
+    private Bus _bus = new Bus();
+    private Truck _truck = new Truck();
+    private Boat _boat = new Boat();
+    private List<Vehicle> _vehicles = new List<Vehicle>();
 
-    void Start()
+    private void Start()
     {
-        print(WheelNumber()); // prints 6, a mustang GameObject would print 4 
-    }
+        _vehicles.Add(_bus);
+        _vehicles.Add(_truck);
+        _vehicles.Add(_boat);
 
-    protected override int WheelNumber()
-    {
-        base.WheelNumber(); //The WheelNumber() method runs inside the inherited base class Vehicle, setting the Wheels variable to 4
-        Wheels += 2; //Adds 2 to Wheels to become 6
-        return Wheels;
+        foreach (var vehicle in _vehicles)
+        {
+           vehicle.Move();
+        }
     }
 }
 
 //Base class
-public class Vehicle : MonoBehaviour
+public class Vehicle
 {
-    protected int Wheels;
-
-    protected virtual int WheelNumber()
-    {
-        Wheels = 4;
-        return Wheels;
+    public virtual void Move()
+    {       
     }
 }
 
-public class Mustang : Vehicle
+public class Bus : Vehicle
 {
-    private void Start()
+    public override void Move()
     {
-        print("A mustang has " + WheelNumber() + " wheels");
-    }
+        Debug.Log("The bus is moving");
+    }    
+}
 
-    protected override int WheelNumber()
+public class Truck : Vehicle
+{
+    public override void Move()
     {
-        Wheels += 4; //Wheel becomes 4
-        return Wheels;
+        Debug.Log("The truck is moving");
+    }
+}
+
+public class Boat : Vehicle
+{
+    public override void Move()
+    {
+        Debug.Log("The boat is moving");
     }
 }
