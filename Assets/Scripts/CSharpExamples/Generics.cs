@@ -19,13 +19,13 @@ public class Generics : MonoBehaviour
         AnyTypeFunction(true);
     }
 
-    private class MyGenericClass<T>
-    {
-        public T value;
-    }
-
     private void AnyTypeFunction<T>(T value)
     {
         print(value);
     }
+}
+
+public class MyGenericClass<T>
+{
+    public T value;
 }
