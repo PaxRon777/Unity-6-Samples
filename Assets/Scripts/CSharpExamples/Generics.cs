@@ -6,13 +6,15 @@ public class Generics : MonoBehaviour
 {
     void Start()
     {
-        MyGenericClass<int> myIntInstance = new MyGenericClass<int>();
+        MyGenericClass<int, string> myIntInstance = new MyGenericClass<int, string>();
         myIntInstance.value = 100;
-        print("Int:" + myIntInstance.value);
+        myIntInstance.value2 = " Cats";
+        print(myIntInstance.value + myIntInstance.value2);
 
-        MyGenericClass<bool> myBoolInstance = new MyGenericClass<bool>();
+        MyGenericClass<bool, int> myBoolInstance = new MyGenericClass<bool, int>();
         myBoolInstance.value = true;
-        print("Bool:" + myBoolInstance.value);
+        myBoolInstance.value2 = 7;
+        print(myBoolInstance.value2 + " is the perfect number? = " + myBoolInstance.value);
 
         AnyTypeFunction("A String");
         AnyTypeFunction(100);
@@ -25,7 +27,8 @@ public class Generics : MonoBehaviour
     }
 }
 
-public class MyGenericClass<T>
+public class MyGenericClass<T, M>
 {
     public T value;
+    public M value2;
 }
