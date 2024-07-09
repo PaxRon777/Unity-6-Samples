@@ -1,7 +1,7 @@
 using UnityEngine;
 
-//Abstract classes are a combination of a MonoBehaviour and an Instance.
-//Abstract class are thefore not instantiated in a scene but also force the inheriting MonoBehaviours to implement its abstract methods.
+//Abstract classes are a combination of a MonoBehaviour and an Interface.
+//Abstract class are thefore Not instantiated in a scene but also force the inheriting MonoBehaviours to implement its abstract methods.
 
 public class AbstractClass : Monster
 {
@@ -18,6 +18,7 @@ public class AbstractClass : Monster
     }
 }
 
+//Base class
 public abstract class Monster : MonoBehaviour
 {
     protected void Bite()
@@ -25,6 +26,5 @@ public abstract class Monster : MonoBehaviour
         print("I am a big monster");
     }
 
-    protected abstract void Growl();
-   
+    protected abstract void Growl();   
 }
