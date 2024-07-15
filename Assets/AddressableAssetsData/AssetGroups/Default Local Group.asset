@@ -21,8 +21,13 @@ MonoBehaviour:
     m_SerializedLabels:
     - Bullet
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 371e2b876e4d90f439f0ec3d93bbfbb4
+    m_Address: Assets/Prefabs/CubeRed.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
   - m_GUID: 37a5f56d4f3b7e24eb34661a9cddf405
-    m_Address: Assets/Prefabs/Cube.prefab
+    m_Address: Assets/Prefabs/CubeGreen.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
     FlaggedDuringContentUpdateRestriction: 0

@@ -147,7 +147,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08ac792cff7f31d49b90993dce3c4468, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _assetReference:
+  _assetReferenceCube:
+    m_AssetGUID: 371e2b876e4d90f439f0ec3d93bbfbb4
+    m_SubObjectName: 
+    m_SubObjectGUID: 
+    m_SubObjectType: 
+    m_EditorAssetChanged: 0
+  _labelReference:
+    m_LabelString: Bullet
+  _gameObject:
     m_AssetGUID: 37a5f56d4f3b7e24eb34661a9cddf405
     m_SubObjectName: 
     m_SubObjectGUID: 
