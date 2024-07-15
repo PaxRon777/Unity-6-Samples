@@ -23,10 +23,14 @@ public class AddressablesExamples : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _gameObject.ReleaseInstance(_gameObjectCube); //Removes the AssetReferenceGameObject cube
+            if (_gameObjectCube != null)
+            {
+                _gameObject.ReleaseInstance(_gameObjectCube); //Removes the AssetReferenceGameObject cube
+            }
         }
     }
 
+    //Instantiate Cube
     private void LoadAsset(AsyncOperationHandle<GameObject> gameObject)
     {
         if (gameObject.Result != null)
@@ -39,6 +43,8 @@ public class AddressablesExamples : MonoBehaviour
         }
     }
 
+
+    //Instantiate bullet
     private void LoadLabelReference(AsyncOperationHandle<GameObject> gameObject)
     {
         if (gameObject.Result != null)
@@ -52,6 +58,7 @@ public class AddressablesExamples : MonoBehaviour
         }
     }
 
+    //Assign the instantiated cube to the _gameObjectCube variable, delete/release by pressing SPACE key
     private void LoadCube(AsyncOperationHandle<GameObject> gameObject)
     {
         _gameObjectCube = gameObject.Result;
