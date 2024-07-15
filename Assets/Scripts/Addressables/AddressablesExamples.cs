@@ -25,7 +25,7 @@ public class AddressablesExamples : MonoBehaviour
         {
             if (_gameObjectCube != null)
             {
-                _gameObject.ReleaseInstance(_gameObjectCube); //Removes the AssetReferenceGameObject cube
+                _gameObject.ReleaseInstance(_gameObjectCube); // Removes/releases the cube
             }
         }
     }
