@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using UnityEngine.ResourceManagement.AsyncOperations;
@@ -9,6 +10,7 @@ public class AddressablesExamples : MonoBehaviour
     [SerializeField] private AssetReference _assetReferenceCube;
     [SerializeField] private AssetLabelReference _labelReference;
     [SerializeField] private AssetReferenceGameObject _gameObject;
+    [SerializeField] private AssetReferenceAudioClip _audioClip; //see custom AssetReferenceAudioClip class below
 
     private GameObject _gameObjectCube;
 
@@ -17,6 +19,7 @@ public class AddressablesExamples : MonoBehaviour
         _assetReferenceCube.LoadAssetAsync<GameObject>().Completed += LoadAsset; //Load an asset of type GameObject
         Addressables.LoadAssetAsync<GameObject>(_labelReference).Completed += LoadLabelReference; //Load asset by its label
         _gameObject.InstantiateAsync().Completed += LoadCube;
+        _audioClip.LoadAssetAsync<AudioClip>().Completed += PlayAudioClip;
     }
 
     private void Update()
@@ -43,7 +46,6 @@ public class AddressablesExamples : MonoBehaviour
         }
     }
 
-
     //Instantiate bullet
     private void LoadLabelReference(AsyncOperationHandle<GameObject> gameObject)
     {
@@ -68,5 +70,22 @@ public class AddressablesExamples : MonoBehaviour
         {
             Debug.Log("Asset Reference load error!");
         }
+    }
+
+    //Play audio clip AssetReference
+    private void PlayAudioClip(AsyncOperationHandle<AudioClip> clip)
+    {
+        AudioSource audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clip.Result;
+        audioSource.Play();
+    }
+}
+
+// Create a specific AssetReference for using a AudioClip
+[Serializable]
+public class AssetReferenceAudioClip : AssetReferenceT<AudioClip>
+{
+    public AssetReferenceAudioClip(string guid) : base(guid)
+    {
     }
 }
