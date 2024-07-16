@@ -33,7 +33,7 @@ public class AddressablesExamples : MonoBehaviour
     //Instantiate Cube
     private void LoadAsset(AsyncOperationHandle<GameObject> gameObject)
     {
-        if (gameObject.Result != null)
+        if (gameObject.Status == AsyncOperationStatus.Succeeded)
         {
             Instantiate(gameObject.Result);
         }
@@ -47,10 +47,9 @@ public class AddressablesExamples : MonoBehaviour
     //Instantiate bullet
     private void LoadLabelReference(AsyncOperationHandle<GameObject> gameObject)
     {
-        if (gameObject.Result != null)
+        if (gameObject.Status == AsyncOperationStatus.Succeeded)
         {
             Instantiate(gameObject.Result);
-
         }
         else
         {
@@ -58,9 +57,16 @@ public class AddressablesExamples : MonoBehaviour
         }
     }
 
-    //Assign the instantiated cube to the _gameObjectCube variable, delete/release by pressing SPACE key
+    //Assign the instantiated cube to the GameObject, delete/release the cube by pressing SPACE key
     private void LoadCube(AsyncOperationHandle<GameObject> gameObject)
     {
-        _gameObjectCube = gameObject.Result;
+        if (gameObject.Status == AsyncOperationStatus.Succeeded)
+        {
+            _gameObjectCube = gameObject.Result;
+        }
+        else
+        {
+            Debug.Log("Asset Reference load error!");
+        }
     }
 }
