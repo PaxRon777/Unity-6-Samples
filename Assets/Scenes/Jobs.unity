@@ -822,7 +822,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19ef82ffb95e50943b47f0a42909d930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isJob: 1
   _calculationLoops: 250000
 --- !u!1 &991935224
 GameObject:
@@ -1155,7 +1154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1573204829
 Transform:
   m_ObjectHideFlags: 0

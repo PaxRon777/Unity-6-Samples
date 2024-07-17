@@ -45,15 +45,18 @@ public class IJobParallelFor : MonoBehaviour
 
     void Update()
     {
+        //Shedule the Job and return the new position, direction and speed
         JobFor job = new JobFor { Positions = _positions, DeltaTime = Time.deltaTime, Speed = _speed, Directions = _directions };
         job.Schedule(_objectNumber, _cpu).Complete();
 
+        //Update transforms with new positions
         for (int i = 0; i < _objectNumber; i++)
         {
             _objectList[i].position = _positions[i];
         }    
     }
 
+    //Cleanup Native Arrays
     private void OnDestroy()
     {
         _directions.Dispose();

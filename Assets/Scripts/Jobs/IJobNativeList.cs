@@ -8,42 +8,20 @@ using Unity.Burst;
 
 public class IJobNativeList : MonoBehaviour
 {
-    private int _cpuCount; //number of logical processors
-    [SerializeField] private bool _isJob;
     [SerializeField] private int _calculationLoops = 250000;
-
-    private void Start()
-    {    
-        print(_cpuCount);
-    }
 
     void Update()
     {
-        if (_isJob)
+        NativeList<JobHandle> jobHandles = new NativeList<JobHandle>(Allocator.Temp);
+        for (int i = 0; i < 10; i++)
         {
-            NativeList<JobHandle> jobHandles = new NativeList<JobHandle>(Allocator.Temp);
-            for (int i = 0; i < 10; i++)
-            {
-                Job2 job2 = new Job2 { CalculationLoops = _calculationLoops };
-                JobHandle handle = job2.Schedule();
-                jobHandles.Add(handle);
-            }
-            JobHandle.CompleteAll(jobHandles.ToArray(Allocator.Temp));
-            jobHandles.Dispose();
+            Job2 job2 = new Job2 { CalculationLoops = _calculationLoops };
+            JobHandle handle = job2.Schedule();
+            jobHandles.Add(handle);
         }
-        else
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                for (int t = 0; t < _calculationLoops; t++)
-                {
-                    float value = 0;
-                    value = math.exp10(math.sqrt(t));
-                }
-            }
-        }
+        JobHandle.CompleteAll(jobHandles.ToArray(Allocator.Temp));
+        jobHandles.Dispose();
     }
-
 }
 
 //JOB

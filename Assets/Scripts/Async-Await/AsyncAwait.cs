@@ -2,7 +2,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using TMPro;
 
-//Using Async/Await to perform tasks in serial and parallel
+//Using Async/Await to spin cubes in serial and parallel
 
 public class AsyncAwait : MonoBehaviour
 {

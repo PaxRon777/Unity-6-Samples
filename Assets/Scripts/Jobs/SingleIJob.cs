@@ -24,6 +24,6 @@ public struct Job1 : IJob
         for (int i = 0; i < 1000000; i++)
         {
             value = math.exp10(math.sqrt(i));
-        }
+        }       
     }
 }
