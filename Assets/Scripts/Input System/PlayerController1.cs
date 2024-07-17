@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//Input System and Input Actions example
+// 1st example of the Input System and using Input Actions
 
-public class PlayerController : MonoBehaviour
+public class PlayerController1 : MonoBehaviour
 {
     [SerializeField] private float _speed = 5;
     [SerializeField] private float _jumpStrength = 15;
