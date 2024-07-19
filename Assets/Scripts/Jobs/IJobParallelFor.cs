@@ -28,7 +28,7 @@ public class IJobParallelFor : MonoBehaviour
         //Set random object positions, speed and direction
         for (int i = 0; i < _objectNumber; i++)
         {
-            Vector3 position = new Vector3(UnityEngine.Random.Range(0, 10), UnityEngine.Random.Range(0, 10), UnityEngine.Random.Range(0, 10));
+            Vector3 position = new Vector3(UnityEngine.Random.Range(0, 10), UnityEngine.Random.Range(0, 10), 20 + UnityEngine.Random.Range(0, 10));
             _objectList.Add(Instantiate(_objectTransform, position, new Quaternion()));
 
             _directions[i] = new Vector3(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f));

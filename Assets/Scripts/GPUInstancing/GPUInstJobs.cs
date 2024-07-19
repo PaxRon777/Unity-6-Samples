@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Jobs;
 using Unity.Mathematics;
@@ -16,9 +15,6 @@ public class GPUInstJobs : MonoBehaviour
     [Header("Instanced Object")]
     [SerializeField] private Mesh _mesh;
     [SerializeField] private Material _material;
-
-    [Header("Non Instanced Object")]
-    [SerializeField] private Transform _object;
 
     private NativeArray<Matrix4x4> _matrices;
     private NativeArray<float3> _pos;
