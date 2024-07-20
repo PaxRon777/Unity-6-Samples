@@ -3,7 +3,7 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 
-//Single job script assigned to multiple GameObjects, 1M math operations per job, using burst
+//Single job, 1M math operations, using burst
 
 public class SingleIJob : MonoBehaviour
 {

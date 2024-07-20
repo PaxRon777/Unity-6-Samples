@@ -4,6 +4,7 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Burst;
 using TMPro;
+using Unity.Jobs.LowLevel.Unsafe;
 
 // GPU Instancing with jobs and burst
 
@@ -20,8 +21,7 @@ public class GPUInstJobs : MonoBehaviour
     private NativeArray<float3> _pos;
     private RenderParams _rp;   
     private int _instances;
-    private MatricesJob _job;
-    private int _cpu;
+    private MatricesJob _job;   
 
     private void Start()
     {
@@ -30,7 +30,6 @@ public class GPUInstJobs : MonoBehaviour
         _pos = new NativeArray<float3>(_instances, Allocator.Persistent);
         _rp = new RenderParams(_material);
         _job = new MatricesJob();
-        _cpu = SystemInfo.processorCount - 1;
 
         //Instantiate grid of GameObjects
         int i = 0;
@@ -52,7 +51,7 @@ public class GPUInstJobs : MonoBehaviour
         _job.Matrices = _matrices;
         _job.Pos = _pos;
         _job.Time = Time.time;
-        _job.Schedule(_matrices.Length, _cpu).Complete();
+        _job.Schedule(_matrices.Length, JobsUtility.MaxJobThreadCount).Complete();
 
         Graphics.RenderMeshInstanced(_rp, _mesh, 0, _matrices);
 

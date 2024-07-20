@@ -4,6 +4,7 @@ using Unity.Burst;
 using Unity.Mathematics;
 using Unity.Collections;
 using System.Collections.Generic;
+using Unity.Jobs.LowLevel.Unsafe;
 
 // Example of using IJobParallelFor to iterate through and update the positions of moving cubes
 
@@ -16,14 +17,13 @@ public class IJobParallelFor : MonoBehaviour
     private NativeArray<float3> _directions;
     private NativeArray<float> _speed;
     private NativeArray<float3> _positions;
-    private int _cpu;
+    private JobFor _job = new JobFor();
 
     void Start()
     {
         _directions = new NativeArray<float3>(_objectNumber, Allocator.Persistent);
         _speed = new NativeArray<float>(_objectNumber, Allocator.Persistent);
         _positions = new NativeArray<float3>(_objectNumber, Allocator.Persistent);
-        _cpu = SystemInfo.processorCount - 1;
 
         //Set random object positions, speed and direction
         for (int i = 0; i < _objectNumber; i++)
@@ -39,21 +39,24 @@ public class IJobParallelFor : MonoBehaviour
         for (int i = 0; i < _objectNumber; i++)
         {
             _positions[i] = _objectList[i].position;
-        }
-       
+        }        
+        
+        _job.Positions = _positions;
+        _job.Speed = _speed;
+        _job.Directions = _directions;
     }
 
     void Update()
     {
-        //Shedule the Job and return the new position, direction and speed
-        JobFor job = new JobFor { Positions = _positions, DeltaTime = Time.deltaTime, Speed = _speed, Directions = _directions };
-        job.Schedule(_objectNumber, _cpu).Complete();
+        //Shedule the Job
+        _job.DeltaTime = Time.deltaTime;
+        _job.Schedule(_objectNumber, JobsUtility.MaxJobThreadCount).Complete();
 
         //Update transforms with new positions
         for (int i = 0; i < _objectNumber; i++)
         {
             _objectList[i].position = _positions[i];
-        }    
+        }
     }
 
     //Cleanup Native Arrays
