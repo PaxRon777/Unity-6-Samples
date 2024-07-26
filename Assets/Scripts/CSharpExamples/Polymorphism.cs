@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-//Polymorphism allows a class to be identified by more than one type.
+// Polymorphism example where different classes are added to a single list using the <Vehicle> type.
 
 public class Polymorphism : MonoBehaviour
 {   

@@ -16,10 +16,10 @@ public class AddressablesExamples : MonoBehaviour
 
     void Start()
     {
-        _assetReferenceCube.LoadAssetAsync<GameObject>().Completed += LoadAsset; //Load an asset of type GameObject
-        Addressables.LoadAssetAsync<GameObject>(_labelReference).Completed += LoadLabelReference; //Load asset by its label
-        _gameObject.InstantiateAsync().Completed += LoadCube;
-        _audioClip.LoadAssetAsync<AudioClip>().Completed += PlayAudioClip;
+        _assetReferenceCube.LoadAssetAsync<GameObject>().Completed += LoadAsset; //Load GameObject using AssetReference
+        Addressables.LoadAssetAsync<GameObject>(_labelReference).Completed += LoadLabelReference; //Load asset by a label using _labelReference
+        _gameObject.InstantiateAsync().Completed += LoadCube; //Load GameObject using AssetReferenceGameObject
+        _audioClip.LoadAssetAsync<AudioClip>().Completed += PlayAudioClip; // Load AudioClip using custom class AssetReferenceAudioClip
     }
 
     private void Update()

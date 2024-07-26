@@ -14,12 +14,12 @@ public class ObjectPooling : MonoBehaviour
     [SerializeField] private int _defaultSize = 5;
     [SerializeField] private int _maxSize = 8;
    
-    public static ObjectPool<GameObject> _pool;
+    public static ObjectPool<GameObject> PoolBullets;
     private int _bulletCount;
 
     void Start()
     {
-        _pool = new ObjectPool<GameObject>(CreateBullet, GetBullet, ReturnBullet, DestroyBullet, true, _defaultSize, _maxSize);
+        PoolBullets = new ObjectPool<GameObject>(CreateBullet, GetBullet, ReturnBullet, DestroyBullet, true, _defaultSize, _maxSize);
         InvokeRepeating("FireBullet", 0, _spawnSpeed);
     }
 
@@ -56,7 +56,7 @@ public class ObjectPooling : MonoBehaviour
 
     private void FireBullet()
     {
-        _pool.Get(); 
+        PoolBullets.Get(); 
         print(_bulletCount);
     }
 }

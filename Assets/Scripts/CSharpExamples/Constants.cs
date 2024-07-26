@@ -1,6 +1,6 @@
 using UnityEngine;
 
-//Values that should not change
+// Constant, values that should not change
 
 public class Constants : MonoBehaviour
 {

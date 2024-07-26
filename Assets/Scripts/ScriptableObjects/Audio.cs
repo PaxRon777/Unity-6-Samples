@@ -2,15 +2,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-[CreateAssetMenu(fileName = "Audio", menuName = "Add SO/Audio/Audio Manager")]
+//Use of a ScriptableObject for a audio manager instead of a Singleton, gets placed inside the Resources folder where an instance is initialised.
 
-//Use of a ScriptableObject for a audio manager instead of a Singleton
+[CreateAssetMenu(fileName = "Audio", menuName = "Add SO/Audio/Audio Manager")]
 
 public class Audio : ScriptableObject
 {
     private static Audio _instance;
-
-    //AudioManager ScriptableObject lives inside the Resources folder where an instance is initialised
+   
     public static Audio Instance
     {
         get
@@ -98,7 +97,7 @@ public class Audio : ScriptableObject
         AudioClip audioClip;
         if (Clips.TryGetValue(clipName, out audioClip))
         {
-            AudioSource audioSource = Instantiate(Instance._audioSource, position, Quaternion.identity);
+            AudioSource audioSource = Instantiate(Instance._audioSource, position, Quaternion.identity); // Ideally a audio pool should be used for the AdioSource
             audioSource.outputAudioMixerGroup = _mixerSFX;
             audioSource.clip = audioClip;
             audioSource.loop = loop;

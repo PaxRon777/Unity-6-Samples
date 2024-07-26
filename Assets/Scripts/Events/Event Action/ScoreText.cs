@@ -12,12 +12,12 @@ public class ScoreText : MonoBehaviour
 
     private void OnEnable()
     {
-        Ball.OnScore += UpdateScore; //suscribe to the balls event to update the score text
+        Ball.OnScore += UpdateScore; //suscribe to the ball event to update the score text
     }
 
     private void OnDisable()
     {
-        Ball.OnScore -= UpdateScore; //Cleanup subscription
+        Ball.OnScore -= UpdateScore; //Cleanup event subscription
     }
 
     private void UpdateScore(int score)

@@ -1,6 +1,8 @@
 using Unity.AI.Navigation;
 using UnityEngine;
 
+// When the on screen button is clicked, the bridge is enabled and the Navmesh is re-built in realtime.
+
 public class AddBridge : MonoBehaviour
 {
     [SerializeField] private NavMeshSurface _navmeshSurface;

@@ -4,8 +4,7 @@ using UnityEngine;
 //Abstract class are thefore Not instantiated in a scene but also force the inheriting MonoBehaviours to implement its abstract methods.
 
 public class AbstractClass : Monster
-{
-    
+{    
     void Start()
     {
         Bite();

@@ -1,11 +1,11 @@
 using UnityEngine;
 
+// Remove/release bullet when it hits an object
+
 public class Bullet : MonoBehaviour
-{
-  
+{  
     private void OnTriggerEnter(Collider other)
     {
-        ObjectPooling._pool.Release(this.gameObject);
+        ObjectPooling.PoolBullets.Release(this.gameObject);
     }
-
 }

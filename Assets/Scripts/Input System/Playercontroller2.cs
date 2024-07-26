@@ -10,7 +10,6 @@ public class PlayerController2 : MonoBehaviour
 
     private Vector2 _move; 
 
-
     void Update()
     {      
         //move player

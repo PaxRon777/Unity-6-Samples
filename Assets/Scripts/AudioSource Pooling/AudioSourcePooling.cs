@@ -9,8 +9,7 @@ public class AudioSourcePooling : MonoBehaviour
     [SerializeField] private int _defaultSize = 15;
     [SerializeField] private int _maxSize = 20;
    
-    public static ObjectPool<AudioSource> AudioSourcePool;   
-   
+    public static ObjectPool<AudioSource> AudioSourcePool;      
 
     void Start()
     {

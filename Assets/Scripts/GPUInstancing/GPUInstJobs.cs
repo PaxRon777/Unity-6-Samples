@@ -65,7 +65,6 @@ public class GPUInstJobs : MonoBehaviour
     }
 }
 
-
 //JOB
 [BurstCompile]
 public struct MatricesJob : Unity.Jobs.IJobParallelFor

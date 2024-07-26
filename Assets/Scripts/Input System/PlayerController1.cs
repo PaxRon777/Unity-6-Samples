@@ -11,7 +11,6 @@ public class PlayerController1 : MonoBehaviour
     //Assign Input Action variables
     private InputAction _moveAction;
     private InputAction _jumpAction;
-
     private Vector2 _move;
     private Rigidbody _rb;
     private bool _isJumping;

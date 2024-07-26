@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 //Catching exceptions
@@ -11,7 +10,7 @@ public class Exceptions : MonoBehaviour
         try
         {
             int a = 0;
-            int b = 1 / a; //division by zero exception
+            int b = 1 / a; // causes a division by zero exception
             print("Programe never reaches here");
         }
         catch (DivideByZeroException) //Look for a specific error
